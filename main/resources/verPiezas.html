@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Mis hospedajes</title>
+
+    <link rel="stylesheet" th:href="@{/assets/css/styles.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" th:href="@{/assets/css/Footer-Basic.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/Navigation-Clean.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/Registration-Form-with-Photo.css}">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean">
+        <div class="container"><a class="navbar-brand" href="#">IX LODGING</a><button class="navbar-toggler"
+                data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
+                    class="navbar-toggler-icon"></span></button>
+
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span> Menu </span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/hospedajes/nuevo">Ingresa Hospedaje</a>
+                            <a class="dropdown-item" href="/mishospedajes/ver">Tus Hospedajes</a>
+                            <a class="dropdown-item" href="#">Reservas en tus hospedajes</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/hospedajes/buscar">Busca Hospedaje</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/misReservas">Reservas</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <form action="/logout" method="post">
+                            <input type="submit" value="logout" class="button">
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="row m-2 justify-content-center">
+
+        <p class="card-text">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre Pieza</th>
+                        <th>Nro Baños</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="p: ${piezas}">
+                        <td scope="row" th:text="${p.getNombrePieza()}"></td>
+                        <td th:text="${p.getNroBanos()}"></td>
+                        <td th:text="${p.getPrecio()}"></td>                    
+
+                    </tr>
+                </tbody>
+            </table>
+        </p>
+
+        <a class="btn btn-primary" role="button" th:href="nuevaPieza">Nueva Pieza</a>
+
+    </div>
+
+    <div class="footer-basic">
+        <footer>
+            <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i
+                        class="icon ion-social-snapchat"></i></a><a href="#"><i
+                        class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a>
+            </div>
+            <p class="copyright">IX LODGING © 2019</p>
+        </footer>
+    </div>
+    <script th:src="@{/assets/js/jquery.min.js}"></script>
+    <script th:src="@{/assets/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
+</html>
